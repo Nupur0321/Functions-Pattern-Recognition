@@ -118,3 +118,65 @@ lines()
 (vi)\
 boxplot(iris$Species , iris$Sepal.Length, ylab ="sepal_length", xlab = "species" )
 
+
+Exercise 3\
+(i) Apply hierarchical clustering to the iris dataset.\
+(ii) Investigate what the clusters mean in these data. Are they related to species?\
+(iii) Do any data points appear erroneous?
+
+
+solution
+
+(i)Apply hierarchical clustering to the iris dataset. (dist is distance)\
+library("e1071")\
+m <- hclust(dist(iris[,1:4]), method="ave")\
+plot(m)\
+clusters = cutree(m, 3)\
+table(clusters, iris$Species)
+
+
+Exercise 4: Enter the following code:\
+vec <- c("aadd3ddee","abaac345fgh","44555669.67","abbrt44 fgt445.962aa","fgddd aart")\
+i) Use grep(), grepl() and grepexpr() to identify which elements of vec contain “aa”.\
+ii) Identify which elements contain a space.\
+iii) Identify which elements contain a full stop.\
+iv) Identify which elements have “aa” at the beginning.\
+v) Identify which elements have “aa” at the end.\
+vi) Identify which elements have contain a number (digit)\
+vii) Which element have the string “dd” followed by a digit\
+viii) Which elements have something contained between two d’s?
+
+solution
+
+(i) Use grep(), grepl() and grepexpr() to identify which elements of vec contain “aa”.
+
+vec <- c("aadd3ddee","abaac345fgh","44555669.67","abbrt44 fgt445.962aa","fgddd aart")\
+vec\
+grep("aa", vec)\
+grepl("aa", vec)\
+gregexpr("aa",vec)
+
+(ii) Identify which elements contain a space.\
+grep("\\s", vec)
+
+(iii) Identify which elements contain a full stop.\
+grep("[[:punct:]]", vec)
+
+(iv) Identify which elements have “aa” at the beginning.\
+element <- grep('^aa', vec)\
+element\
+vec[element]  # it will tell the name of element has "aa"
+
+(v) Identify which elements have “aa” at the end.\
+grep('aa$', vec)
+
+(vi) Identify which elements have contain a number (digit)\
+grep('\\d', vec)
+
+(vii) Which element have the string “dd” followed by a digit\
+grep('dd\\d', vec)
+
+(viii) Which elements have something contained between two d’s?\
+grep('d*d', vec)\
+# grep('d{2}', vec) #only for 2 d's
+
