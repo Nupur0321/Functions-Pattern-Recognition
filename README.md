@@ -178,5 +178,6 @@ grep('dd\\d', vec)
 
 (viii) Which elements have something contained between two d’s?\
 grep('d*d', vec)\
-# grep('d{2}', vec) #only for 2 d's
+```
+grep('d{2}', vec) #only for 2 d's
 
