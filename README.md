@@ -180,4 +180,181 @@ grep('dd\\d', vec)
 grep('d*d', vec)\
 ```
 grep('d{2}', vec) #only for 2 d's
+```
+
+Exercise 5: Enter the following\
+x <- “R Totorials are the best totorials”\
+i) Use regular expressions to correct the spelling of tutorials in both instances.\
+ii) Change the the capital T to lower case.\
+iii) Add a full stop to the end of the sentence.
+
+solution
+
+x <- c("R Totorials are the best totorials")\
+x
+
+(i)Use regular expressions to correct the spelling of tutorials in both instances.
+
+y <- gsub("Totorials" , "tutorials", x, ignore.case = T)\
+y\
+```
+ignore.case is insensitive
+```
+
+(ii ) Change the the capital T to lower case.\
+gsub("T", "t", x)
+
+(iii) Add a full stop to the end of the sentence.\
+gsub("$",".",x)
+
+
+Exercise 6: Enter the following:\
+y <- "line 4322: He is now 25 years old, and weights 130lbs"\
+i) Change the numbers to underscores, leaving only the letters\
+ii) Remove the comma\
+iii) Change the letters to underscores, leaving only the numbers
+
+solution
+
+y <- "line 4322: He is now 25 years old, and weights 130lbs"\
+y
+
+i) Change the numbers to underscores, leaving only the letters\
+
+z <- gsub("\\d", "_", y)\
+z
+
+(ii) Remove the comma\
+gsub("[[:punct:]]", "", y)
+
+(iii) Change the letters to underscores, leaving only the numbers\
+gsub("\\w", "_", y) #replace all with underscore\
+gsub("\\W", "_", y) #replace space with underscore\
+gsub("\\D", "_", y)
+
+
+Exercise 7: Enter the following \
+a <- c("foo_5", "bar_7")\
+i) Create a numeric vector called anum with the letters and underscores removed, i.e. retain the numeric vector (5,7).\
+ii) Returning to the original vector, remove underscores and numbers. Merge this character vector into one character string called achar to read “foobar”
+
+solution
+
+a <- c("foo_5", "bar_7")\
+a
+
+(i) Create a numeric vector called anum with the letters and underscores removed, i.e. retain the numeric vector (5,7)\
+anum <- gsub("\\D", "",a)\
+anum\
+as.numeric(anum)  #to pass string
+
+(ii) Returning to the original vector, remove underscores and numbers. Merge this character vector into one character string called achar to read “foobar”\
+anum1 <- gsub("[[:punct:]]\\d","", a)\
+anum1\
+foobar <- paste(anum1[1],anum1[2], sep = "")\
+foobar
+
+
+Exercise 8: Enter the following\
+rcats <- c("r cat r", "r category r", "r locate r", "r rescat r")\
+i) Identify which elements contain a word beginning with “cat”\
+ii) Identify which elements contain a word ending with “cat”\
+iii) Identify which elements contain the word “cat”
+
+solution
+
+rcats <- c("r cat r", "r category r", "r locate r", "r rescat r")\
+rcats
+
+(i) Identify which elements contain a word beginning with “cat”\
+grep("\\scat", rcats)
+
+(ii) Identify which elements contain a word ending with “cat”\
+grep('cat\\s', rcats)
+
+(iii) Identify which elements contain the word “cat”\
+rcats[grep("cat", rcats)]     # this way print the element
+
+
+Exercise 9
+
+When transferring some data between different software, some unexpected errors can occur. Below is a vector that was imported to R, which should contain five numbers between 0 and 99999.
+
+data <- c(‘jhhg12nbvc’,’12sifvfibvjfvnbuibv34’, “1dfgr66afsgder23afvfv”, “54bfgb,fhb.bgv44”, “dfb64dfb82cnb5)”
+
+Use regular expressions and the appropriate functions to clean this data and create a vector data containing the numeric values.
+
+solution
+```
+When transferring some data between different software, some unexpected errors can occur. Below is a vector that was imported to R, which should contain five numbers between 0 and 99999.
+```
+
+data <- c("jhhg12nbvc","12sifvfibvjfvnbuibv34", "1dfgr66afsgder23afvfv", "54bfgb,fhb.bgv44", "dfb64dfb82cnb5")\
+data
+```
+Use regular expressions and the appropriate functions to clean this data and create a vector data containing the numeric values.
+```
+newdata <- gsub("\\D", "",data)\
+newdata
+
+[Advanced] Exercise 10\
+Import the data set brainsize2.txt to R.\
+i) View the data set. You will notice that an error occurred where the digit 6 was imported as the character “b”.\
+ii) Fix this error throughout the data set and create a data frame with the cleaned data.\
+
+solution
+
+brainsize2 <- read.delim(file.choose())\
+View(brainsize2)\
+(i) View the data set. You will notice that an error occurred where the digit 6 was imported as the character “b”.\
+(ii) Fix this error throughout the data set and create a data frame with the cleaned data.\
+for (i in 1:ncol(brainsize2)) {\
+  for (j in 1:nrow(brainsize2)) {\
+    brainsize2[j,i] <- gsub('b','6',brainsize2[j,i], ignore.case = F)\
+  }\
+}\
+brainsize2
+
+toC = function(tf){\
+  (tf-273)\
+}\
+toC(1)
+
+x <- 1:20\
+y <- 3*x\
+df <- data.frame(x,y)\
+df[[1]]
+
+
+as.character(3.8)\
+subset(iris,Species=="virginica")
+
+
+paste("a", "b", sep = ":")\
+x = c(0.1, 2, 4.3, 3.1, 5)\
+x[x > 4]
+
+
+a <- c(1,2,3)\
+cat("a is the vector", a)\
+x=1:100; plot(x,log(x))
+
+
+as.numeric("b")\
+as.logical(3.8)\
+a <- c(1,2,3)\
+paste("a is the vector", a)
+
+
+x <- 1:20\
+y <- 3*x\
+df <- data.frame(x,y)\
+df[1]
+
+
+x <- 1:20\
+y <- 3*x\
+df <- data.frame(x,y)\
+df[[1]]
+
 
