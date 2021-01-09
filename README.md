@@ -56,3 +56,65 @@ axis(side =4, at=c(0:20))
 legend("topleft",legend = c("Longer Production gives greater loss"))
 
 
+
+Exercise 2
+
+(i) Type “iris” into the R console to view the iris dataset.\
+(ii) Calculate the minimum and maximum of the four numeric columns\
+(iii) Calculate the mean, median, mode, IQR, SD and Variance of each column\
+(iv) Reset the background colour to white [from Exercise 1 (ii)].\
+(v) Plot each of the four variables against the other variables.\
+(vi) Generate a boxplot for each of the four columns
+
+
+solution
+
+(i)\
+View(iris)
+
+(ii)\
+min(iris$Sepal.Length)\
+min(iris$Sepal.Width)\
+min(iris$Petal.Length)\
+min(iris$Petal.Width)\
+max(iris$Sepal.Length)\
+max(iris$Sepal.Width)\
+max(iris$Petal.Length)\
+max(iris$Petal.Width)
+
+(iii)\
+mean(iris$Sepal.Length)\
+mean(iris$Sepal.Width)\
+mean(iris$Petal.Length)\
+mean(iris$Petal.Width)\
+median(iris$Sepal.Length)\
+median(iris$Sepal.Width)\
+median(iris$Petal.Length)\
+median(iris$Petal.Width)\
+mode(iris$Sepal.Length) # mode doesn't has standard inbuilt function 
+IQR(iris$Sepal.Length)\
+IQR(iris$Sepal.Width)\
+IQR(iris$Petal.Length)\
+IQR(iris$Petal.Width)\
+sd(iris$Sepal.Length)\
+sd(iris$Sepal.Width)\
+sd(iris$Petal.Length)\
+sd(iris$Petal.Width)\
+var(iris$Sepal.Length)\
+var(iris$Sepal.Width)\
+var(iris$Petal.Length)\
+var(iris$Petal.Width)\
+
+summary(iris)
+
+(iv)\
+par(bg ="white", plot(iris))
+
+(v)\
+plot(iris$Sepal.Length, iris$Sepal.Width)\
+plot(iris$Petal.Length, iris$Petal.Width, xlab = "petal length", ylab = "petal width", main = "iris datset", col= "purple")\
+lines()
+
+(vi)\
+boxplot(iris$Species , iris$Sepal.Length, ylab ="sepal_length", xlab = "species" )
+
